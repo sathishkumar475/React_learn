@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import CounterApp from "./CounterApp";
 
 let Button = styled.button`
   background-color: blue;
@@ -13,12 +14,12 @@ let Button = styled.button`
 let NewButton = styled(Button)`
   box-shadow: 5px 3px 5px black;
 `;
-let user = "Sathish";
+// let user = "Sathish";
 
 function printsomethink(e) {
   //   console.log(e.target.innerText);
   //   console.log("hollow");
-  user = "Rajan";
+  // user = "Rajan";
   console.log(user);
 }
 
@@ -28,15 +29,19 @@ function printsomethink1(event) {
 }
 
 const Content = () => {
+  const [user, setuser] = useState("Rajan");
   let headingstyle = {
     backgroundColor: "red",
     color: "white",
     boxShadow: "10px 10px 5px black",
   };
-
+  function namechange() {
+    setuser("Sathish");
+  }
   return (
     <main>
       <p style={headingstyle}>Main Content -{user}</p>
+
       <Button onClick={printsomethink}>click me</Button>
       <NewButton
         onClick={(e) => {
@@ -45,6 +50,8 @@ const Content = () => {
       >
         Dublicate{" "}
       </NewButton>
+      <button onMouseOver={namechange}></button>
+      <CounterApp />
     </main>
   );
 };
